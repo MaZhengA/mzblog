@@ -112,7 +112,7 @@ ReactDOM.render(<Parent />, document.getElementById('root'));
 普通组件是传入props来生成ui,高阶组件是传入的参数是组件,返回也是组件
 #### 使用场景
 高阶组件可以重复利用代码或者是补充原来的组件没有的功能
-#### 栗子🌰
+#### 例子🌰
 ```javascript
 function HigherOrderComponent(WrappedComponent) {
 	return class extends React.Component {
