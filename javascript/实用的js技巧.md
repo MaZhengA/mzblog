@@ -36,4 +36,12 @@ const obj = Object.fromEntries(entries);
 console.log(obj); // { name: 'mazheng', age: '24 }
 ```
 
+#### 4.使用时间戳作为state刷新组件
+在某些情况下没有state但是想刷新组件，可以通过这种方式来更新state然后刷新组件
+```javascript
+this.state = {
+  dateId: Date now()
+}
 
+this.setState({ dateId: Date now() })
+```
