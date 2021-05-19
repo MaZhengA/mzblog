@@ -53,3 +53,7 @@ this.setState({ dateId: Date now() })
 
 #### 5.判断时间大小
 需要先把moment转化为unix字符串，然后比较大小
+
+#### 6.判断时间是否为moment对象
+使用_isAMomentObject方法
+![示例](http://pic.yupoo.com/mazhenghjj/28736148/682e4f17.png)
