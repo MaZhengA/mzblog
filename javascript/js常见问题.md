@@ -13,3 +13,6 @@ String("ma") 返回类型：基本类型 返回值：字符串的值
 
 #### 4. map如果不return时，作用与forEach一样
 ![例子](http://pic.yupoo.com/mazhenghjj/43d11aea/06b18ad8.png)
+
+#### 5. GUI线程和js线程
+二者是互斥的，因此如果js执行时间过长，会造成页面掉帧，卡顿
