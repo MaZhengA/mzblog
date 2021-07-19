@@ -12,3 +12,9 @@
  > BEM是块(Block)、元素(Element)、修饰符(Modifier)三者的缩写
 
  block__elem--hidden
+
+ #### display: table-cell
+ 行内元素只能设置左右margin, 块元素可以设置任意margin, table-cell设置margin无效
+
+ #### display: inline-block
+基于baseline对齐, 因此会存在上下不对齐的情况, 所以要加上vertical-align属性
