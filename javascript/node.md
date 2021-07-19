@@ -25,3 +25,5 @@ server.listen(port, hostname, () => {
   console.log(`服务器运行于 http://${hostname}:${port}/`);
 });
 ```
+
+#### 3. yarn upgrade把指定范围内的包升级到最新版本

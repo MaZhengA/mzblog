@@ -35,3 +35,5 @@ function isRepeat(array) {
   return false;
 }
 ```
+
+#### 7. 数组的长度值是比数组的最大索引多1的数
