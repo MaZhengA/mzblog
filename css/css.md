@@ -24,3 +24,5 @@
 可使用rtl使省略号移至头部
 
 #### 6. direction: rtl + unicode-bidi: bidi-override可以使文本倒叙
+
+#### 7. nth-child() 选择父元素的第几个子元素 nth-child-of() 选择指定类型的元素
