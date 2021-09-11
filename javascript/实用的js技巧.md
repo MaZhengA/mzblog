@@ -60,3 +60,30 @@ this.setState({ dateId: Date now() })
 
 #### 7. 同时使用两个叹号(!!)
 相当于调用了转型函数Boolean(),第一个叹号返回布尔值,第二个叹号对该布尔值取反,从而给出变量真正对应的布尔值(摘自《js高程4》)
+
+#### 8. saync和await使用
+```javascript
+function fn1 () {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(5)
+    }, 1000)
+  })
+}
+
+function fn2 (data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data * 10)
+    }, 2000)
+  })
+}
+
+async function req () {
+  // 同步方式执行异步，像排队一样
+  const data1 = await fn1() // 等待1秒后返回数据再往下执行
+  const data2 = await fn2(data1) // 拿data1去请求2秒后，往下走
+  console.log(data2) // 总共3秒后 输出 50
+}
+req()
+```
