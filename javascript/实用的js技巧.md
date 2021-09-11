@@ -87,3 +87,13 @@ async function req () {
 }
 req()
 ```
+#### 9. 规范的函数注释
+```javascript
+/**
+ * 函数功能描述
+ *
+ * @param {Object} 函数传参
+ * @return {Axios} 函数的返回值
+ */
+
+```
