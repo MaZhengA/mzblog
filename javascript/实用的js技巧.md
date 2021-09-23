@@ -58,10 +58,10 @@ this.setState({ dateId: Date now() })
 使用_isAMomentObject方法
 ![示例](http://pic.yupoo.com/mazhenghjj/28736148/682e4f17.png)
 
-#### 7. 同时使用两个叹号(!!)
+#### 7.同时使用两个叹号(!!)
 相当于调用了转型函数Boolean(),第一个叹号返回布尔值,第二个叹号对该布尔值取反,从而给出变量真正对应的布尔值(摘自《js高程4》)
 
-#### 8. 规范的函数注释
+#### 8.规范的函数注释
 ```javascript
 /**
  * 函数功能描述
@@ -70,4 +70,11 @@ this.setState({ dateId: Date now() })
  * @return {Axios} 函数的返回值
  */
 
+```
+
+#### 9.判断非0的方法
+```javascript
+function isNonEmpty(param) {
+  return param !== '' && param !== undefined && param !== null && !Number.isNaN(val)
+}
 ```
