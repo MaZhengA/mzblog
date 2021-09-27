@@ -78,3 +78,7 @@ function isNonEmpty(param) {
   return param !== '' && param !== undefined && param !== null && !Number.isNaN(val)
 }
 ```
+
+#### 10.ES6-12新特性
+![总结](http://pic.yupoo.com/mazhenghjj/8d9ebaaa/8d0d5f55.jpeg)
+
