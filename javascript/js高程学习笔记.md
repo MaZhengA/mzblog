@@ -22,3 +22,5 @@ console.log(stringValue.slice(3, -4)) // 'lo w' 此处-4被转换成7,实际上�
 console.log(stringValue.substring(3, -4)) // 'hel' // 此处-4被转换为0,调用了substring(0,3),实际上此函数会以较小的参数作为起点
 console.log(stringValue.substr(3,-4)) // '' (empty string) // 实际上是substr(3,0),0为实际的数值,因此是个空字符串
 ```
+
+#### 5. new运算符
