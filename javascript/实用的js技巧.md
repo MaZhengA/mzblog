@@ -115,3 +115,26 @@ const getSelectedText = () => window.getSelection().toString();
 ```js
 const getRandomBoolean = () => Math.random() >= 0.5
 ```
+
+#### 14.两个集合是否具有包含关系
+```js
+const isIncludes = (superset, subset) => {
+  return subset.every(val => superset.includes(val));
+}
+```
+
+#### 15.判断数组是否有重复元素(通过hash)
+```js
+function isRepeat(array){  
+  var hash = {};  
+  for(var i in array) {  
+    if(array[i]!=""){  
+      if(hash[array[i]]) {
+        return true;  
+      } 
+      hash[array[i]] = true;  
+    }  
+  }  
+  return false;  
+} 
+```
