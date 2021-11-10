@@ -138,3 +138,18 @@ function isRepeat(array){
   return false;  
 } 
 ```
+
+#### 16. 去除一维数组重复项
+```js
+const removeDuplicates = (arr) => [...new Set(arr)];
+```
+
+#### 17. 判断数组是否是空数组
+```js
+const isNotEmpty = arr => Array.isArray(arr) && arr.length > 0;
+```
+
+#### 18. 滚动页面顶部
+```js
+const goToTop = () => window.scrollTo(0, 0);
+```

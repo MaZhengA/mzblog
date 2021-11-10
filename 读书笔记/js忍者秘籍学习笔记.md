@@ -19,3 +19,19 @@ new Function('a', 'b', 'return a + b')
 ```js
 function* myGen() { yield 1; } 
 ```
+#### 2. 函数上下文（this指向）
+- 作为函数直接被调用时，this有两种可能性：在非严格模式下是全局上下文，而在严格模式下是undefined
+- 作为对象的某个方法被调用时，该对象会成为函数的上下文
+```js
+function whatsMyContext() {
+  return this;
+}
+
+var getMyThis = whatsMyContext; // getMyThis() === window; 函数上下文是window
+
+var ninja = {
+  getMyThis: whatsMyContext
+}; 
+
+ninja.getMyThis() === ninja; // 使用ninja对象的方法getMyThis调用函数，函数的上下文是ninja，这就是面向对象
+```
