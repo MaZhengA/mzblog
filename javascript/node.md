@@ -27,3 +27,5 @@ server.listen(port, hostname, () => {
 ```
 
 #### 3. yarn upgrade把指定范围内的包升级到最新版本
+
+#### 4. node_modules中带下划线的依赖是因为使用了cnpm下载，使用npm或yarn则不会有

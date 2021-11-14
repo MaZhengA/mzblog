@@ -26,3 +26,5 @@
 #### 6. direction: rtl + unicode-bidi: bidi-override可以使文本倒叙
 
 #### 7. nth-child() 选择父元素的第几个子元素 nth-child-of() 选择指定类型的元素
+
+#### 8.表单无需滚动到底部就显示滚动条，需要给表格加一个height，如果是在model中，则要禁用model本身的overflow: auto
