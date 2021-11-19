@@ -41,7 +41,7 @@ console.log(obj); // { name: 'mazheng', age: '24 }
 
 #### 4.使用时间戳作为 state 刷新组件
 
-在某些情况下没有 state 但是想刷新组件，可以通过这种方式来更新 state 然后刷新组件
+> 在某些情况下没有 state 但是想刷新组件，可以通过这种方式来更新 state 然后刷新组件
 
 ```js
 this.state = {
@@ -50,12 +50,6 @@ this.state = {
 
 this.setState({ dateId: Date now() })
 ```
-
-#### 4.mousedown 先于 blur 执行,click 后于 blur 执行
-
-使用场景：例如失焦事件后出现一个弹窗，当循环出得两个 input 框失焦事件相同时，在第一个框点击修改后，
-点击第二个框触发第一个框的失焦事件，这时再去点击弹窗的确认，实际上先触发了第二个弹窗的失焦事件，
-导致弹窗出现了两次，这时候就可以把点击弹窗确认按钮的 click 事件转为 mousedown 事件，使弹窗可以关闭
 
 #### 5.判断时间大小
 
@@ -70,15 +64,31 @@ this.setState({ dateId: Date now() })
 
 相当于调用了转型函数 Boolean(),第一个叹号返回布尔值,第二个叹号对该布尔值取反,从而给出变量真正对应的布尔值(摘自《js 高程 4》)
 
-#### 8.规范的函数注释
+#### 8. saync和await使用
+```javascript
+function fn1 () {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(5)
+    }, 1000)
+  })
+}
 
-```js
-/**
- * 函数功能描述
- *
- * @param {Object} 函数传参
- * @return {Axios} 函数的返回值
- */
+function fn2 (data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data * 10)
+    }, 2000)
+  })
+}
+
+async function req () {
+  // 同步方式执行异步，像排队一样
+  const data1 = await fn1() // 等待1秒后返回数据再往下执行
+  const data2 = await fn2(data1) // 拿data1去请求2秒后，往下走
+  console.log(data2) // 总共3秒后 输出 50
+}
+req()
 ```
 
 #### 9.判断非 0 的方法
@@ -152,4 +162,20 @@ const isNotEmpty = arr => Array.isArray(arr) && arr.length > 0;
 #### 18. 滚动页面顶部
 ```js
 const goToTop = () => window.scrollTo(0, 0);
+```
+
+#### 19.mousedown 先于 blur 执行,click 后于 blur 执行
+
+> 使用场景：例如失焦事件后出现一个弹窗，当循环出得两个 input 框失焦事件相同时，在第一个框点击修改后，
+点击第二个框触发第一个框的失焦事件，这时再去点击弹窗的确认，实际上先触发了第二个弹窗的失焦事件，
+导致弹窗出现了两次，这时候就可以把点击弹窗确认按钮的 click 事件转为 mousedown 事件，使弹窗可以关闭
+
+#### 20. 规范的函数注释
+```js
+/**
+ * 函数功能描述
+ *
+ * @param {Object} 函数传参
+ * @return {Axios} 函数的返回值
+ */
 ```
