@@ -35,3 +35,18 @@ var ninja = {
 
 ninja.getMyThis() === ninja; // 使用ninja对象的方法getMyThis调用函数，函数的上下文是ninja，这就是面向对象
 ```
+- 作为构造函数被调用，如果够构造函数返回一个对象，则该对象作为整个表达式返回，传入的this将被丢弃
+```js
+var puppet = { rules: false };
+
+function Emperor() { 
+  this.rules = true; 
+  return puppet; 
+}
+
+var emperor = new Emperor();
+
+emperor // 返回puppet的值
+
+emperor.rules // 值为false 
+```
