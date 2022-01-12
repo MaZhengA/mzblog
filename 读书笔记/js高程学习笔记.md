@@ -24,3 +24,7 @@ console.log(stringValue.substr(3,-4)) // '' (empty string) // 实际上是substr
 ```
 
 #### 5. new运算符
+
+#### 6. 数组方法
+- reduce 第二个参数为初始值（initialValue）
+- array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
