@@ -28,3 +28,29 @@ console.log(stringValue.substr(3,-4)) // '' (empty string) // 实际上是substr
 #### 6. 数组方法
 - reduce 第二个参数为初始值（initialValue）
 - array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+
+#### 7. 栈方法
+- 后进先出（Last-In-First-Out），即后添加的先被删除，数据项的插入（push）和删除（pop）只在栈的栈顶发生
+
+#### 8. 队列方法
+- 先进先出（First-In-First-Out），队列在列表末尾添加数据在列表开头获取数据，可通过push和shift把数组当成队列来使用
+
+#### 9. 数组的排序方法
+- reverse() 将数组反向排列
+- sort() 将数组按照升序排列，会在数组的每一项调用一个toString()方法，然后比较字符串来决定顺序。
+1. 存在的问题，用字符串比较大小，多数情况下是不合适的。因为要传入一个比较函数，来进行排序
+```js
+function compare(value1, value2) {
+  if (value1 < value2) {
+    return -1;
+  } else if (value1 > value2) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+let values = [0,1,10,15,5];
+values.sort(compare);
+console.log(values); // [0,1,5,10,15] 
+```
