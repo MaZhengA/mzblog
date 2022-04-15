@@ -1,6 +1,7 @@
 #### 1. 指数运算符
 - Math.pow(3, 2) // 9
 - 3 ** 2 // 9
+
 #### 2. Number(undefined) == NaN; Number(null) == 0;
 #### 3. 原始类型的初始化可以只使用原始字面量形式，如果使用new关键字，则js会创建一个Object类型的实例，但其行为类似原始值
 let name1 = 'mazheng';
@@ -54,3 +55,4 @@ let values = [0,1,10,15,5];
 values.sort(compare);
 console.log(values); // [0,1,5,10,15] 
 ```
+
