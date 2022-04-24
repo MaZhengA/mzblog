@@ -50,3 +50,14 @@ a === b; // true, a和b引用的同一个数组因此相等
 
 #### 9. 0.1 + 0.2 !== 0.3
 因为二进制的浮点数0.1和0.2并不精确，因此所加结果是一个比较接近0.3的值（不止js,所有满足IEEE-754 标准的语言都有这种问题）
+
+#### 10.export写法
+```js
+export { default as DefaultExport } from 'bar.js';
+```
+等价于
+```js
+import { default as DefaultExport } from 'bar.js'; // 标准写法
+import DefaultExport from 'bar.js'; // 上边的简写
+export { DefaultExport };
+```
