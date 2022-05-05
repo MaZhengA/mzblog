@@ -61,3 +61,7 @@ import { default as DefaultExport } from 'bar.js'; // 标准写法
 import DefaultExport from 'bar.js'; // 上边的简写
 export { DefaultExport };
 ```
+
+#### 11. null >= 0为true，null === 0为false
+1. 当使用===和!==操作服饰，不会在检查相等之前转换操作数的类型，因此null === 0为false
+2. 当使用>=时，会在比较相等之前转换操作数的类型，因此null >= 0为true
