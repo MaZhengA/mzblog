@@ -20,11 +20,14 @@
 基于baseline对齐, 因此会存在上下不对齐的情况, 所以要加上vertical-align属性
 
 #### 5. direction: ltr/rtl
-可以改变子元素的排列方向，无法改变单段文本的排列方向
-可使用rtl使省略号移至头部
+- 可以改变子元素的排列方向，无法改变单段文本的排列方向
+- 可使用rtl使省略号移至头部
 
 #### 6. direction: rtl + unicode-bidi: bidi-override可以使文本倒叙
 
 #### 7. nth-child() 选择父元素的第几个子元素 nth-child-of() 选择指定类型的元素
 
 #### 8.表单无需滚动到底部就显示滚动条，需要给表格加一个height，如果是在model中，则要禁用model本身的overflow: auto
+
+#### 9.inset属性
+> inset CSS 属性是对应于 top、right、bottom 和/或 left 属性的简写。它具有与边距速记相同的多值语法。
