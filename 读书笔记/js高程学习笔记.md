@@ -56,3 +56,14 @@ values.sort(compare);
 console.log(values); // [0,1,5,10,15] 
 ```
 
+#### 10. URLSearchParams()
+描述
+
+URLSearchParams()构造器创建并返回一个新的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams">URLSearchParams</a>对象，开头的'?'字符会被忽略
+
+方法
+
+1.get
+
+语法： URLSearchParams.get(name)
+作用：返回一个与搜索参数对应的值，可用去从接口查参数的场景
