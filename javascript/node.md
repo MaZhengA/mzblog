@@ -29,3 +29,13 @@ server.listen(port, hostname, () => {
 #### 3. yarn upgrade把指定范围内的包升级到最新版本
 
 #### 4. node_modules中带下划线的依赖是因为使用了cnpm下载，使用npm或yarn则不会有
+
+#### 5. 使用n更新node版本
+1. n 选取已安装版本
+2. n help 帮助
+3. n ls 列出已安装的所有node版本
+4. n stable 把当前系统的node升级成最新的稳定版本
+5. n lts 安装长期支持版
+6. n latest 安装最新版
+7. n 16.14.2 安装指定版本
+8. n rm 16.14.2 删除执行版本 
