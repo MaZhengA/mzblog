@@ -67,3 +67,46 @@ URLSearchParams()构造器创建并返回一个新的<a href="https://developer.
 
 语法： URLSearchParams.get(name)
 作用：返回一个与搜索参数对应的值，可用去从接口查参数的场景
+
+#### 11. 创建对象
+三种方式描述
+
+1. 工厂模式
+```js
+function createPerson(name, age) {
+  let o = new Object();
+  o.name = name;
+  o.age = age;
+  o.sayName = function() {
+    console.log(this.name)
+  }
+  return o;
+}
+
+let person1 = createPerson("MaZheng", 26);
+```
+2. 构造函数模式
+> 按照惯例，构造函数名称的首字母要大写
+```js
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.sayName = function() {
+    console.log(this.name)
+  }
+}
+
+let Person1 = new Person("MaZheng", 26);
+Person1.sayName()
+```
+3. 原型模式
+```js
+function Person() {}
+Person.prototype.name = "MaZheng";
+Person.prototype.age = 26;
+Person.prototype.sayName = function() {
+  console.log(this.name);
+}
+let person1 = new Person();
+person1.sayName()
+```
