@@ -65,3 +65,6 @@ export { DefaultExport };
 #### 11. null >= 0为true，null === 0为false
 1. 当使用===和!==操作服饰，不会在检查相等之前转换操作数的类型，因此null === 0为false
 2. 当使用>=时，会在比较相等之前转换操作数的类型，因此null >= 0为true
+
+#### 12. 当要安装的包与已安装的包存在冲突时，使用npm -i --force解决
+![图例](http://pic.yupoo.com/mazhenghjj/ea579c81/0e9969c7.png)
