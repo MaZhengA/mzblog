@@ -34,3 +34,11 @@ function quickSort(arr) {
 }
 console.log(quickSort([1,5,3,4,87,21]))
 ```
+
+#### 3. 铺平数组
+```js
+[[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
+  const flatten = acc.concat(item);
+  return flatten;
+});
+```
