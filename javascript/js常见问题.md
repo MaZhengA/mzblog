@@ -68,3 +68,11 @@ export { DefaultExport };
 
 #### 12. 当要安装的包与已安装的包存在冲突时，使用npm -i --force解决
 ![图例](http://pic.yupoo.com/mazhenghjj/ea579c81/0e9969c7.png)
+
+#### 13. 判断对象是否为空
+使用lodash isEmpty或者Object.keys(obj).length;使用json.stringify(obj) === '{}'极耗性能
+```js
+function isEmptyObj(obj) {
+  return obj && obj.constructor === Object && Object.keys(obj).length === 0;
+}
+```
