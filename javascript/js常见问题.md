@@ -76,3 +76,6 @@ function isEmptyObj(obj) {
   return obj && obj.constructor === Object && Object.keys(obj).length === 0;
 }
 ```
+
+#### 14. [] == ![]的结果
+结果为true,使用“==”时，两边的值都会转为数字再进行比较，![]会首先转化为boolean,为false，转为数字则是0，因此得到该结果
