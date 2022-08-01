@@ -42,3 +42,36 @@ console.log(quickSort([1,5,3,4,87,21]))
   return flatten;
 });
 ```
+
+#### 4. 手撕数组slice方法
+```js
+/**
+ * 思路
+ * 新建一个数组用来做result，遍历开始到结束这个区间内的值，添加在result里边
+ */
+function slice(array, start, end) {
+  let length = array.length;
+
+  start = start === null ? 0 : start;
+  end = end === undefined ? length : end;
+
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+
+  if (end < 0) {
+    end += length
+  } 
+
+  length = start > end ? 0 : end - start;
+
+  let index = -1;
+  const result = new Array(length);
+
+  while(++index < length) {
+    result[index] = array[index+start]
+  }
+  return result;
+}
+console.log(slice([1,2,3,4,5], -1))
+```
