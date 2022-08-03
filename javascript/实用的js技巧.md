@@ -179,3 +179,22 @@ const goToTop = () => window.scrollTo(0, 0);
  * @return {Axios} 函数的返回值
  */
 ```
+
+#### 21.获取cookie
+```js
+function getCookie(cname)
+{
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) 
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+  return "";
+}
+
+// 调用函数
+let  cookie_val = getCookie('cookie的名字');
+
+```
