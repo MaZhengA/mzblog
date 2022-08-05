@@ -198,3 +198,9 @@ function getCookie(cname)
 let  cookie_val = getCookie('cookie的名字');
 
 ```
+
+#### 22. 控制台打印样式
+```js
+// 通过%c占位符可以为打印内容添加样式
+console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue;padding: 2px");
+```
