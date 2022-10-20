@@ -79,3 +79,14 @@ function isEmptyObj(obj) {
 
 #### 14. [] == ![]的结果
 结果为true,使用“==”时，两边的值都会转为数字再进行比较，![]会首先转化为boolean,为false，转为数字则是0，因此得到该结果
+
+#### 15. JSON.stringify()序列化会把对象的undefined、function、Symbol值转换成空或者null
+```js
+// 如果值在数组中则被转成null
+console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol(''), null] }));
+// expected output: "{"x":[10,null,null,null]}"
+
+// 如果值本身在对象中，则会被忽略
+console.log(JSON.stringify({ x: 5, y: 6, z: undefined, o: function(){}, p: Symbol('')}));
+// expected output: "{"x":5,"y":6}"
+```
