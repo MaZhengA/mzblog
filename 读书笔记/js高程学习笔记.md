@@ -110,3 +110,11 @@ Person.prototype.sayName = function() {
 let person1 = new Person();
 person1.sayName()
 ```
+
+#### 12. 运算符
+1. in 
+如果指定的属性在指定的对象或原型链中，则in运算符返回true
+```js
+const car = { make: 'Honda' };
+console.log('make' in car) // true
+```
