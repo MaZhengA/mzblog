@@ -90,3 +90,9 @@ console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol(''), null] 
 console.log(JSON.stringify({ x: 5, y: 6, z: undefined, o: function(){}, p: Symbol('')}));
 // expected output: "{"x":5,"y":6}"
 ```
+
+#### 16. input框踩坑
+```js
+"input is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`".
+input是一个void元素标记，既不能有“children”，也不能使用“dangerouslySetInnerHTML”。
+```
