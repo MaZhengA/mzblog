@@ -96,3 +96,8 @@ console.log(JSON.stringify({ x: 5, y: 6, z: undefined, o: function(){}, p: Symbo
 "input is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`".
 input是一个void元素标记，既不能有“children”，也不能使用“dangerouslySetInnerHTML”。
 ```
+
+#### 17. react-quill踩坑
+```js
+当使用onBlur时，输入完成后直接点及其他元素，value不会被改变，需要把onBlur应用到react-quill的上级组件中。
+```
