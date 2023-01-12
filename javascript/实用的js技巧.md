@@ -206,7 +206,7 @@ console.log("This is %cMy stylish message", "color: yellow; font-style: italic; 
 ```
 
 #### 23. structuredClone方法
-```js
 全局的 structuredClone() 方法使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Structured_clone_algorithm" target="_blank">结构化克隆算法</a>将给定的值进行深拷贝。
+```js
 const arr = structuredClone([]);
 ```
