@@ -215,3 +215,8 @@ const arr = structuredClone([]);
 ```js
 const isAtBottom = () => document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight;
 ```
+
+#### 25. 从html中获取text
+```js
+const stripHtml = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent || '';
+```
