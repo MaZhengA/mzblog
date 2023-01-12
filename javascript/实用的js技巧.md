@@ -210,3 +210,8 @@ console.log("This is %cMy stylish message", "color: yellow; font-style: italic; 
 ```js
 const arr = structuredClone([]);
 ```
+
+#### 24. 判断是否滚动到了页面底部
+```js
+const isAtBottom = () => document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight;
+```
