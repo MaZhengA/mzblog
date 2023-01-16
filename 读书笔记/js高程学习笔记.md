@@ -118,3 +118,6 @@ person1.sayName()
 const car = { make: 'Honda' };
 console.log('make' in car) // true
 ```
+
+2. ~ 按位非
+- 按位非运算时，任何数字 x 的运算结果都是 -(x + 1)。例如，~-5 运算结果为 4

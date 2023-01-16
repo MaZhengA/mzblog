@@ -220,3 +220,13 @@ const isAtBottom = () => document.documentElement.clientHeight + window.scrollY 
 ```js
 const stripHtml = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent || '';
 ```
+
+#### 26. url编码
+```js
+const encode = (url) => encodeURIComponent(url).replace(/!/g, '%21').replace(/~/g, '%7E').replace(/\*/g, '%2A').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/%20/g, '+');
+```
+
+#### 27. 获取变量的类型
+```js
+const getTypeOf = (obj) => Object.prototype.toString.call(obj).match(/\[object (.*)\]/)[1];
+```
