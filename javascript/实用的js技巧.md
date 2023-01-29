@@ -230,3 +230,8 @@ const encode = (url) => encodeURIComponent(url).replace(/!/g, '%21').replace(/~/
 ```js
 const getTypeOf = (obj) => Object.prototype.toString.call(obj).match(/\[object (.*)\]/)[1];
 ```
+
+#### 28. 过滤空值
+```js
+let res = [1,2,0,undefined,null,false,''].filter(Boolean); // 1,2
+```
