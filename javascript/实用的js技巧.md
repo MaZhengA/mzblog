@@ -57,7 +57,7 @@ this.setState({ dateId: Date now() })
 
 #### 6.判断时间是否为 moment 对象
 
-使用\_isAMomentObject 方法
+使用_isAMomentObject 方法
 ![示例](http://pic.yupoo.com/mazhenghjj/28736148/682e4f17.png)
 
 #### 7.同时使用两个叹号(!!)
