@@ -8,11 +8,11 @@ console.log(needArr) // ['4', '5']
 
 #### 2. 判断输入框未输入值
 ```javascript
-bad
+// bad
 if (value !== null && value !== undefined && value !== '') {};
 
-good
-- es6的判断运算符,??左侧的值为null或者undefined时,才会返回右侧的值
+// good
+// es6的判断运算符,??左侧的值为null或者undefined时,才会返回右侧的值
 if (value??'' !== '') {};
 
 ```
