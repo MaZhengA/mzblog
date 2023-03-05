@@ -39,3 +39,5 @@ server.listen(port, hostname, () => {
 6. n latest 安装最新版
 7. n 16.14.2 安装指定版本
 8. n rm 16.14.2 删除执行版本 
+
+#### 6. express
