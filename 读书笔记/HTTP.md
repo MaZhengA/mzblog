@@ -171,7 +171,7 @@
 使用ws:或wss:作为URI，成功建立连接后，通信将会使用websocket独立的数据帧，然后就可以调用websocket的api进行通信了
 
 16. web攻击技术
-	+ 跨站脚本攻击（Cross-Site Scripting，XSS）是指通过存在安全漏洞的Web网站中，在注册用户的浏览器内运行非法的 HTML 标签或 JavaScript 进行的一种被动攻击<br>
+	+ 跨站脚本攻击（Cross-Site Scripting，XSS）是指通过存在安全漏洞的Web网站中，在浏览器内运行非法的 HTML 标签或 JavaScript 进行的一种被动攻击<br>
 	+	可能造成的影响:
 		- 利用虚假输入表单骗取用户信息
 		- 利用脚本窃取cookie值，帮助攻击者发送恶意请求
