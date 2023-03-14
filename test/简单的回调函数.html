@@ -8,8 +8,23 @@
 </head>
 <body>
   <script>
-    
+   function add() {
+    let arg = Array.prototype.slice.call(arguments);
 
+    let inner = function() {
+      arg.push(...arguments);
+      return inner;
+    }
+
+    inner.toString = function() {
+      return arg.reduce((prev, cur) => {
+        return prev + cur
+      })
+    }
+    return inner;
+   }
+   
+   console.log(add(1)(2)(3)(4))
   </script>
 </body>
 </html>
