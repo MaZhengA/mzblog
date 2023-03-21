@@ -72,3 +72,23 @@ commit了一次特别尴尬的提交，使用这个命令，可以再次修改�
 
 ### 五. 终端美化工具
 1. 安装on-my-zsh工具 2. 安装Powerline修复乱码
+
+### 六. git flow工作流
+概念：定义了一整套完善的基于Git分支模型的框架，结合了版本发布的研发流程，适合管理具有固定发布周期的大型项目
+
+分支：
+1. master唯一对外发布的分支
+2. develop根据master创建出来，用来集成开发完成的各种特性
+3. feature根据develop创建出来，gitflow工作流里每个新特性都有自己的feture分支，开发结束后，合并到develop上
+4. release当积累够足够多的特性的时候，或到预定发布日期时，从develop创建一个release分支，专门用来做和当前版本发布有关的工作，最终会被合成到master上，
+5. hotfix直接根据master分支创建得到的，其目的是为了给运行在生产环境中的系统快速提供补丁，同时确保不会给正在其他上分支进行的工作造成影响，可以合并到master分支和develop分支，以及当前的release分支
+
+工作流程：
+1. git flow int对本地项目初始化
+2. 执行完第一步，会发现本地除了master，会多出一个develop分支，并且当前分支被切换到了develop
+3. git flow feature start 'abc'，会从develop分支创建一个feature/abc的分支，并把当前分支切换到该分支上
+4. git flow feature finish 'abc'，把feture/abc合并到develop上，并把此分支从远程库和本地库删除掉，再切换到develop上
+5. git flow hotfix start 'fix'，会从master切出一个hotfix/fix分支，并把当前分支切换到此分支，
+6. 结束后使用git flow hotfix finish 'fix'，会把hotfix/fix合并到master和develop，然后把此分支从远程库和本地库删除掉，再把当前分支切换成develop
+7. 当前版本即将发布时，git flow release start 'def'，从develop创建并切换到一个release/def的分支，做修复bug的工作
+8. 发布结束后，git flow release finish 'def'，合并到master分支和develop分支，然后把此分支从远程库和本地库删除掉，再把当前分支切换成develop
