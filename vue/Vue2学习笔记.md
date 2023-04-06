@@ -1,6 +1,7 @@
 #### vue的特点
 1. 采用组件化模式，提高代码复用率，让代码更好维护
 2. 声明式编码，无需直接操作DOM，提高开发效率
+
 #### 基础
 1. 通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新
 2. 修饰符.stop可阻止事件冒泡
@@ -49,8 +50,8 @@ Object.defineProperty(person, 'age', {
 VueComponent.prototype.__proto__ === Vue.prototype;这样可以使VueComponent的可以访问到Vue原型上的属性和方法
 
 #### Vue SPA组件
-20. 使用vue create 'xx'创建项目报错时，可能是因为某些依赖需要使用sudo权限，因此执行npm run serve没有安装上，这时候需要把sudo权限免写，再重新安装依赖
-21. 修改脚手架默认配置需要新建一个vue.config.js文件
-22. 混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。
-23. 可选 scoped attribute 会自动添加一个唯一的 attribute (比如 data-v-21e5b78) 为组件内 CSS 指定作用域
-24. 引入less-loader时也要增加less依赖，通过npm view '包名称' version 可以看安装版本
+1. 使用vue create 'xx'创建项目报错时，可能是因为某些依赖需要使用sudo权限，因此执行npm run serve没有安装上，这时候需要把sudo权限免写，再重新安装依赖
+2. 修改脚手架默认配置需要新建一个vue.config.js文件
+3. 混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。
+4. 可选 scoped attribute 会自动添加一个唯一的 attribute (比如 data-v-21e5b78) 为组件内 CSS 指定作用域
+5. 引入less-loader时也要增加less依赖，通过npm view '包名称' version 可以看安装版本

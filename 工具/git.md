@@ -27,6 +27,9 @@ git stash drop
 
 # 应用指定的记录: 例如删除第二条
 git stash apply stash@{1}
+
+# 重命名分支(把某个分支名改为main)
+git branch -M main
 ```
 ### 二. reset --soft
 #### 应用场景：
@@ -92,3 +95,4 @@ commit了一次特别尴尬的提交，使用这个命令，可以再次修改�
 6. 结束后使用git flow hotfix finish 'fix'，会把hotfix/fix合并到master和develop，然后把此分支从远程库和本地库删除掉，再把当前分支切换成develop
 7. 当前版本即将发布时，git flow release start 'def'，从develop创建并切换到一个release/def的分支，做修复bug的工作
 8. 发布结束后，git flow release finish 'def'，合并到master分支和develop分支，然后把此分支从远程库和本地库删除掉，再把当前分支切换成develop
+
