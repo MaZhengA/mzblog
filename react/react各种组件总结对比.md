@@ -20,7 +20,7 @@ ReactDOM.render(
 
 ### class组件
 #### 写法
-```javescript
+```js
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -56,7 +56,7 @@ ReactDOM.render(
 #### 含义
 值始终受到state控制,值的改变由state驱动
 #### react组件的双向绑定
-```javascript
+```js
 class Son extends React.Component {
   constructor(props){
     super(props);
