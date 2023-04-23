@@ -42,7 +42,7 @@ const EventBus = new Vue();通过 EventBus.$off()移除事件
 相似之处：
 - 都有自己的构建工具
 - 都使用 Virtual DOM 保证重绘性能
-- 都有 props ，允许组件间数据传递
+- 都有 props，允许组件间数据传递
 - 都鼓励组件化应用
 不同之处
 - Vue默认支持数据双向绑定，React提倡单项数据流
