@@ -26,4 +26,31 @@ v-show：通过display属性判断显隐，更小的切换开销
 ### 6. v-for和v-if
 v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，因此一般不连用。v-if可以放在外层元素
 
-### 
+### 7. watch 和 computed区别
+computed：模板中放入太多的逻辑会让模板过重且难以维护，因此引入了computed，计算属性是基于响应式依赖进行缓存的
+watch：用来响应数据的变化，当需要在数据变化时执行异步或开销较大的操作时使用
+
+### 8. 组件通信
+1. 父组件通过props给子组件传值
+2. 通过ref和&refs来实现父子通信，ref定义在子组件上，通过$refs实例访问组件的数据和方法，
+4. provide/inject，父组件中通过provide提供变量，子组件通过inject注入组件
+3. 子组件通过$emit绑定一个监听事件，当事件被执行时将参数传递给父组件，父组件通过v-on监听并接受参数
+4. 兄弟组件通信通过全局事件总线bus，使用 EventBus.$emit() 发送事件，通过EventBus.$on()接收事件，
+const EventBus = new Vue();通过 EventBus.$off()移除事件
+
+### 9. 和react的异同
+相似之处：
+- 都有自己的构建工具
+- 都使用 Virtual DOM 保证重绘性能
+- 都有 props ，允许组件间数据传递
+- 都鼓励组件化应用
+不同之处
+- Vue默认支持数据双向绑定，React提倡单项数据流
+- 在渲染中，Vue不会重新渲染整个组件树，而react的状态被修改时，子组件会重新渲染，需要通过PureComponent/shouldComponentUpdate优化
+- Vue编写模版的方式接近于HTML，React则通过JSX编写
+
+### 10. keep-alive
+<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们，用于保留组件状态或避免重新渲染。
+
+### 11. mixin
+mixins 选项接收一个混入对象的数组，这些混入对象可以像正常的实例对象一样包含实例选项，这些选项会被合并到最终的选项中，来实现组件复用
