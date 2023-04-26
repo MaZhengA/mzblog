@@ -77,3 +77,78 @@ setState用于变更状态，触发组件重新渲染、更新视图UI
 相同点：都用于处理副作用
 区别：useLayoutEffect可同步触发dom渲染，但计算量较大的任务会造成阻塞
 使用：代码引起了页面闪烁使用useLayoutEffect
+
+### 10. useEffect模拟的class组件生命周期
+1. 第二个参数不传时，每次都更新，模拟了DidMount 和 DidUpdate
+2. 第二个参数为空数组时，只更新一次，模拟了DidMount
+3. 第二个参数为参数数组时，依赖项改变时触发，模拟了DidUpdate
+4. 返回一个函数时，模拟了WillUnMount，应用：比如清除定时器
+
+### 11. React16架构
+相较于15，增加了调度器Scheduler，在15之前，react的Reconciler采用递归的方式创建虚拟DOM，递归的过程是不能中断的。如果组件数的层级很深，递归会占用线程很多时间，造成卡顿，为了解决这个问题，16将递归中无法中断的更新重构为异步的可中断的更新，以前的用于递归的虚拟DOM结构无法满足需要了，因此Fiber应运而生。
+
+1. React16的架构分为三层：
+- Scheduler（调度器）- 调度任务的优先级，高优任务优先进入Reconciler
+- Reconciler（协调器）- 负责找出变化的组件
+- Renderer（渲染器）- 负责将变化的组件渲染到页面上
+
+2. Fiber的含义
+- 作为架构来说，15的数据保存在调用栈中，被称为stack Reconciler，16的Reconciler基于Fiber节点实现，被称为Fiber Reconciler
+```js
+// 指向父级Fiber节点
+this.return = null;
+// 指向子Fiber节点
+this.child = null;
+// 指向右边第一个兄弟Fiber节点
+this.sibling = null;
+```
+- 作为静态数据来说，每个Fiber节点对应一个React element，保存了该组件的类型、对应的DOM节点信息
+```js
+// Fiber对应组件的类型 Function/Class/Host...
+this.tag = tag;
+// key属性
+this.key = key;
+// 大部分情况同type，某些情况不同，比如FunctionComponent使用React.memo包裹
+this.elementType = null;
+// 对于 FunctionComponent，指函数本身，对于ClassComponent，指class，对于HostComponent，指DOM节点tagName
+this.type = null;
+// Fiber对应的真实DOM节点
+this.stateNode = null;
+```
+- 作为动态的工作单元来说，每个Fiber节点保存了本次更新中组件改变的状态、要执行的工作（增、删、改）
+
+3. Scheduler的原理与实现
+包含两个功能：
+- 时间切片
+本质是模拟实现requestIdleCallback(该函数在浏览器空闲时被调用)
+- 优先级调度
+
+### 12. useCallback和useMemo区别
+useCallback把内联回调函数及依赖项数组作为参数传入 useCallback，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新，
+当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 shouldComponentUpdate）的子组件时，它将非常有用。
+```js
+const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b],
+);
+
+// useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
+```
+useMemo把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。
+```js
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+二者区别在于useMemo会调用fn函数并返回结果，useCallback将返回fn而不调用<br>
+React.Memo是一个高阶组件，将组件包装在 React.memo 中调用，相同的 props 会渲染相同的结果，默认只进行浅比较，如果要控制对比过程，通过第二个函数来实现
+
+### 13. 那些生命周期可以调用setState
+1. componentDidMount中执行 setState 会导致组件在初始化的时候就触发了更新，渲染了两遍，可以
+2. componentWillUnmount不生效无意义
+3. 禁止在 shouldComponentUpdate 和 componentWillUpdate 中调用setState，这会造成循环调用，直至耗光浏览器内存后崩溃
+4. 在 componentDidUpdate 中执行 setState 会导致组件刚刚完成更新，又要再更新一次，连续渲染两遍（和在 componentDidMount 中执行 setState 类似）。可以在条件语句中调用
+6. 在 componentWillReceiveProps中可以 setState，不会造成二次渲染
+### 14. componentWillReceiveProps被替换原因
+在 componentWilReceiveProps 中判断前后两个 props 是否相同，如果不同再将新的 props更新到相应的 state 上去，会破坏 state 数据的单一数据源，导致组件状态变得不可预测，另一方面当外部多个属性在很短的时间间隔之内多次变化，也会增加组件的重绘次数<br/>
+使用getDerivedStateFromProps的时候，就算props在很短的时间内多次变化，也只会触发一次render，从而提高了性能。
