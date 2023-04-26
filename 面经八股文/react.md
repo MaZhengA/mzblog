@@ -149,6 +149,7 @@ React.Memo是一个高阶组件，将组件包装在 React.memo 中调用，相�
 3. 禁止在 shouldComponentUpdate 和 componentWillUpdate 中调用setState，这会造成循环调用，直至耗光浏览器内存后崩溃
 4. 在 componentDidUpdate 中执行 setState 会导致组件刚刚完成更新，又要再更新一次，连续渲染两遍（和在 componentDidMount 中执行 setState 类似）。可以在条件语句中调用
 6. 在 componentWillReceiveProps中可以 setState，不会造成二次渲染
+
 ### 14. componentWillReceiveProps被替换原因
 在 componentWilReceiveProps 中判断前后两个 props 是否相同，如果不同再将新的 props更新到相应的 state 上去，会破坏 state 数据的单一数据源，导致组件状态变得不可预测，另一方面当外部多个属性在很短的时间间隔之内多次变化，也会增加组件的重绘次数<br/>
 使用getDerivedStateFromProps的时候，就算props在很短的时间内多次变化，也只会触发一次render，从而提高了性能。
