@@ -67,7 +67,7 @@ setState用于变更状态，触发组件重新渲染、更新视图UI
 缺点：内存占用较高、无法进行极致优化
 工作原理：通过js对象模拟dom节点，虚拟dom在实现上通常是plain object(简单对象)，以react为例，在render函数中写了JSX，通常会在babel插件的作用下，编译为React.createElement执行JSX中的属性参数，执行后会返回一个plain object,
 他会描述自己的组件名称、props和children等情况，通过树形结构组成一颗虚拟dom树，当状态发生变更时。进行diff比较，执行结果成为patch，然后渲染patch完成对真实dom的操作<br>
-Keys 是 React 用于追踪哪些列表中元素被修改、被添加或者被移除的辅助标识，从而减少不必要的元素重渲染此外
+Keys 是 React 用于追踪哪些列表中元素被修改、被添加或者被移除的辅助标识，从而减少不必要的元素重渲染
 
 ### 8. react hooks的使用限制
 1. 不能在条件、循环和嵌套函数中调用Hook，
