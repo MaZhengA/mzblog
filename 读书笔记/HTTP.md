@@ -199,3 +199,15 @@
 		- 如果没有更新过资源，则返回304，用于确认代理或客户端拥有的本地资源的有效性，获取资源更新的时间，通过返回字段Last-Modified来确认<br>
 
 		- 有时用时间比较过期资源并不准确（较短时间更新或者周期性更新回以前的值），引入可以使用If-None-Match字段，当 If-None-Match 字段值的实体标记（ETag）值与请求资源的 ETag 不一致时，它就告知服务器处理该请求
+
+19. 和跨域相关的请求头和响应头有哪些方法
+	+ 请求头
+		- Origin：当前数据源
+		- Access-Control-Request-Headers：本次真是请求的额外请求头
+		- Access-Control-Request-Method：本次真实请求额外的请求方法
+	+ 响应头
+		- Access-Control-Allow-Credentials：凭证，为true表示允许cookie包含在跨域请求中
+		- Access-Control-Allow-Headers
+		- Access-Control-Allow-Methods
+		- Access-Control-Allow-Origin
+		- Access-Control-Expose-Headers：响应头 
