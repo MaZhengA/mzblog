@@ -5,3 +5,4 @@
 #### 4. 查看当前npm使用的镜像：nrm ls，带星号的就是当前使用的
 #### 5. 切换源命令：nrm use 'xxx' xxx表示源名称，例如：'taobao'
 #### 6. 全局切换源命令：npm config set registry 'xxx'，xxx表示源路径，例如：'https://registry.npm.taobao.org'
+#### 7. 在访达查找文件shift+command+g
