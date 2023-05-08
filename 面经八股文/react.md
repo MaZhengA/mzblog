@@ -62,7 +62,7 @@ setState用于变更状态，触发组件重新渲染、更新视图UI
 前言：react主要工作是组件实现、更新调度等，react-dom则提供了网页渲染的基础
 优势：
 1. 提升性能：大量的直接操作DOM容易引起网页性能下降，这时react基于虚拟dom的diff运算和批处理操作可降低dom操作范围和频次，提升网页性能
-2. 规避xss风险：虚拟dom存在字符转义，但时react中使用 dangerousSetInnerHtml 可以绕过转义
+2. 规避xss风险：虚拟dom存在字符转义，但是react中使用 dangerousSetInnerHtml 可以绕过转义
 3. 跨平台成本更低
 缺点：内存占用较高、无法进行极致优化
 工作原理：通过js对象模拟dom节点，虚拟dom在实现上通常是plain object(简单对象)，以react为例，在render函数中写了JSX，通常会在babel插件的作用下，编译为React.createElement执行JSX中的属性参数，执行后会返回一个plain object,
