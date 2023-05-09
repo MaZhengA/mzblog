@@ -144,7 +144,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 二者区别在于useMemo会调用fn函数并返回结果，useCallback将返回fn而不调用<br>
 React.Memo是一个高阶组件，将组件包装在 React.memo 中调用，相同的 props 会渲染相同的结果，默认只进行浅比较，如果要控制对比过程，通过第二个函数来实现
 
-### 13. 那些生命周期可以调用setState
+### 13. 哪些生命周期可以调用setState
 1. componentDidMount中执行 setState 会导致组件在初始化的时候就触发了更新，渲染了两遍，可以
 2. componentWillUnmount不生效无意义
 3. 禁止在 shouldComponentUpdate 和 componentWillUpdate 中调用setState，这会造成循环调用，直至耗光浏览器内存后崩溃

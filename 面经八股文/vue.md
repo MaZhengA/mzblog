@@ -70,7 +70,7 @@ mixins 选项接收一个混入对象的数组，这些混入对象可以像正�
   - 备注：ref也能用来定义对象类型数据，内部会自动通过reactive转换为代理对象
 + 从原理角度：
   - ref通过Object.defineProperty()的get和set来实现响应式
-  - react通过Proxy来实现响应式，并通过Reflect来操作源对象内部的数据
+  - reactive通过Proxy来实现响应式，并通过Reflect来操作源对象内部的数据
 + 从数据读取角度：
   - ref定义的数据，操作需要.value，读取不需要
   - reactive定义的数据，操作与读取均不需要.value
