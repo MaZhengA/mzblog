@@ -53,7 +53,7 @@ JSX是JS语法扩展，可以在JS文件中书写类似于HTML的标签<br>
 setState用于变更状态，触发组件重新渲染、更新视图UI
 源码中通过 isBatchingUpdates 判断state是存入队列还是直接更新，值为fasle时直接更新，true时存入队列，
 在React的生命周期和合成事件中，可以拿到 isBatchingUpdates 的控制权，将状态放进队列，控制执行节奏,<br>
-在17以前，react 给 document 挂载事件监听，dom 事件触发后冒泡到 document，react 找到对应组件，生成合成事件，
+合成事件：在17以前，react 给 document 挂载事件监听，dom 事件触发后冒泡到 document，react 找到对应组件，生成合成事件，
 并按组件树模拟一遍事件冒泡，17之后，挂载在dom容器上，即 ReactDOM.render 所调用的节点<br>
 原因是为了保持内部的一致性和启用并发(批量)更新
 在原生事件中，拿不到 isBatchingUpdates ，因此是同步更新的
@@ -65,8 +65,7 @@ setState用于变更状态，触发组件重新渲染、更新视图UI
 2. 规避xss风险：虚拟dom存在字符转义，但是react中使用 dangerousSetInnerHtml 可以绕过转义
 3. 跨平台成本更低
 缺点：内存占用较高、无法进行极致优化
-工作原理：通过js对象模拟dom节点，虚拟dom在实现上通常是plain object(简单对象)，以react为例，在render函数中写了JSX，通常会在babel插件的作用下，编译为React.createElement执行JSX中的属性参数，执行后会返回一个plain object,
-他会描述自己的组件名称、props和children等情况，通过树形结构组成一颗虚拟dom树，当状态发生变更时。进行diff比较，执行结果成为patch，然后渲染patch完成对真实dom的操作<br>
+工作原理：通过js对象模拟dom节点，以react为例，在render函数中写了JSX，通常会在babel插件的作用下，编译为React.createElement执行JSX中的属性参数，执行后会返回一个plain object，他会描述自己的组件名称、props和children等情况，通过树形结构组成一颗虚拟dom树，当状态发生变更时。进行diff比较，执行结果成为patch，然后渲染patch完成对真实dom的操作<br>
 Keys 是 React 用于追踪哪些列表中元素被修改、被添加或者被移除的辅助标识，从而减少不必要的元素重渲染
 
 ### 8. react hooks的使用限制
@@ -149,7 +148,7 @@ React.Memo是一个高阶组件，将组件包装在 React.memo 中调用，相�
 2. componentWillUnmount不生效无意义
 3. 禁止在 shouldComponentUpdate 和 componentWillUpdate 中调用setState，这会造成循环调用，直至耗光浏览器内存后崩溃
 4. 在 componentDidUpdate 中执行 setState 会导致组件刚刚完成更新，又要再更新一次，连续渲染两遍（和在 componentDidMount 中执行 setState 类似）。可以在条件语句中调用
-6. 在 componentWillReceiveProps中可以 setState，不会造成二次渲染
+6. 在 componentWillReceiveProps 中可以 setState，不会造成二次渲染
 
 ### 14. componentWillReceiveProps被替换原因
 在 componentWilReceiveProps 中判断前后两个 props 是否相同，如果不同再将新的 props更新到相应的 state 上去，会破坏 state 数据的单一数据源，导致组件状态变得不可预测，另一方面当外部多个属性在很短的时间间隔之内多次变化，也会增加组件的重绘次数<br/>
