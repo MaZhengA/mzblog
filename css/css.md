@@ -47,3 +47,6 @@
    - 否则，如果此元素的父元素的 user-select 采用的属性值为 all，则该元素采用的属性值也为 all
    - 否则，如果此元素的父元素的 user-select 采用的属性值为 none，则该元素采用的属性值也为 none
    - 否则，采用的属性值为 text
+
+#### 11. 夜空的颜色
+background: linear-gradient(to bottom, #000 0%, #5788fe 100%);

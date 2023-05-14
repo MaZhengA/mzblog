@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #000 0%, #5788fe 100%);
+    }
+
+    #canvas {
+      border: 1px solid #000;
+    }
+
+    .landscape {
+      background: url('http://pic.yupoo.com/mazhenghjj/4d2bb84d/83ff907f.webp');
+      background-repeat: repeat-x;
+      width: 100%;
+      height: 100%;
+      background-position: center bottom;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .filter {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fe5757;
+      animation: colorChange 15s ease-in-out infinite;
+    }
+
+    /* 增加动画模拟夜晚到天亮 */
+    @keyframes colorChange {
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="landscape"></div>
+  <canvas id="canvas"></canvas>
+  <div class="filter"></div>
+
+  <script>
+
+    //拿到canvas
+    let canvas = document.getElementById("canvas");
+    //创建二维的画布
+    let ctx = canvas.getContext("2d");
+    initRoundPopulation = 80,
+            round = []
+        //设置画布的宽高与屏幕的宽和高相等
+        const WIDTH = document.documentElement.clientWidth,
+            HEIGHT = document.documentElement.clientHeight
+        canvas.width = WIDTH
+        canvas.height = HEIGHT
+
+    // let canvas = document.getElementById('canvas'),
+    //   ctx = canvas.getContext('2d'),
+    //   initRoundPopulation = 80,
+    //   round = [];
+    // //设置画布的宽高与屏幕的宽和高相等
+    // const WIDTH = document.documentElement.clientWidth,
+    //   HEIGHT = document.documentElement.clientHeight
+    // canvas.width = WIDTH
+    // canvas.height = HEIGHT
+
+    //构造函数
+    function RoundItem(index, x, y, ctx) {
+      this.index = index;
+      //点的x坐标，y坐标
+      this.x = x;
+      this.y = y;
+      this.ctx = ctx;
+      //半径
+      this.r = Math.random() * 2 + 1;
+      this.color = 'rgba(255,255,255,1)'
+    }
+
+    //new RoundItem(1, 2, 3, 'ctx')
+    RoundItem.prototype.draw = function () {
+      //绘制
+      this.ctx.fillStyle = this.color;
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+      this.ctx.closePath();
+      this.ctx.fill();
+    }
+
+    init()
+
+    function init() {
+      // 出现星星
+      for (let i = 0; i < initRoundPopulation; i++) {
+        // 批量生成80个对象
+        
+        round[i] = new RoundItem(i, Math.random() * WIDTH, Math.random() * HEIGHT, ctx)
+
+        //递归调用
+        round[i] && round[i].draw()
+      }
+    }
+
+  </script>
+</body>
+
+</html>
