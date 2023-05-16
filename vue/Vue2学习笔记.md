@@ -55,3 +55,7 @@ VueComponent.prototype.__proto__ === Vue.prototype;这样可以使VueComponent�
 3. 混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。
 4. 可选 scoped attribute 会自动添加一个唯一的 attribute (比如 data-v-21e5b78) 为组件内 CSS 指定作用域
 5. 引入less-loader时也要增加less依赖，通过npm view '包名称' version 可以看安装版本
+
+#### Vue CLI
+1. Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统，是webpack的超集
+2. CLI 服务(@vue/cli-server)是一个开发环境依赖，内部的 vue-cli-service 命令，提供了serve、build、lint命令

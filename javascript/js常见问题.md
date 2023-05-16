@@ -101,3 +101,6 @@ input是一个void元素标记，既不能有“children”，也不能使用“
 ```js
 当使用onBlur时，输入完成后直接点及其他元素，value不会被改变，需要把onBlur应用到react-quill的上级组件中。
 ```
+
+#### 18. polyfill 
+polyfill是一块代码，用来为旧浏览器提供它没有原生支持的比较新的属性
