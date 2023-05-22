@@ -56,6 +56,19 @@ VueComponent.prototype.__proto__ === Vue.prototype;这样可以使VueComponent�
 4. 可选 scoped attribute 会自动添加一个唯一的 attribute (比如 data-v-21e5b78) 为组件内 CSS 指定作用域
 5. 引入less-loader时也要增加less依赖，通过npm view '包名称' version 可以看安装版本
 
-#### Vue CLI
+#### Vue CLI vue.config.js文件
 1. Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统，是webpack的超集
 2. CLI 服务(@vue/cli-server)是一个开发环境依赖，内部的 vue-cli-service 命令，提供了serve、build、lint命令
+3. configureWebpack 提供的对象调整webpack配置
+4. chainWebpack 是一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例，对内部的webpack配置进行更细粒度的修改
+5. ts-loader 不能处理vue文件，因此在options中要加 appendTsSuffixTo: [/\.vue$/],
+6. lintOnSave 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
+7. transpileDependencies 默认情况下 babel-loader 会忽略所有 node_modules 中的文件，开启此选项(true)，以避免构建后的代码中出现未转译的第三方依赖。会降低构建速度，因此可以传输一个数组，列出第三方包名或正则表达式
+
+#### Vite vite.config.js
+1. 介绍：前端构建工具，能够显著提升前端开发体验。两部分组成：
+  - 一个开发服务器，它基于 原生 ES 模块 提供了 丰富的内建功能，如速度快到惊人的 模块热更新（HMR）。
+  - 一套构建指令，它使用 Rollup 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。
+2. vite-plugin-cdn-import 是一个Vite插件，允许指定 modules 在生产环境中使用 CDN 引入。这可以减少构建时间,并且提高生产环境中页面加载速度。
+prodUrl 允许为特定的模块指定CDN的位置。autoComplete 支持自动完成引入，无需通过定义对象的方式引入
+3. rollup-plugin-visualizer 可以用来分析vite创建的项目的打包体积，在 vite.config.js 中的 plugins 中配置 visualizer({ open: true })，然后执行npm run build 会生成一个 stats.html 文件

@@ -193,3 +193,10 @@ export default {
 在多个组件间动态切换时缓存被移除的组件实例<br>
 可以通过 include 和 exclude prop 来定制缓存的内容<br>
 通过传入 max prop 来限制可被缓存的最大组件实例数
+
+### 六. setup
+#### defineExpose()
+使用 <script setup> </script>的组件是默认关闭的, 可以通过 defineExpose 编译器宏来显式指定在 <script setup> </script> 组件中要暴露出去的属性，即子组件暴露自己的属性和方法，在父组件可以使用
+
+#### /deep/ & ::v-deep
+style 标签设置 scoped 属性时，css 只作用于当前组件，增加这两个属性(深度选择器)中的一个可以在父子组件拥有相同类名时，只写一次样式

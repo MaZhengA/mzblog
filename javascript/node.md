@@ -41,3 +41,10 @@ server.listen(port, hostname, () => {
 8. n rm 16.14.2 删除执行版本 
 
 #### 6. express
+
+#### 7. 查看当前npm使用的镜像：nrm ls，带星号的就是当前使用的
+#### 8. 切换源命令：nrm use 'xxx' xxx表示源名称，例如：'taobao'
+#### 9. 全局切换源命令：npm config set registry 'xxx'，xxx表示源路径，例如：'https://registry.npm.taobao.org'
+#### 10. -S 等价于 --save && -D 等价于 --save-dev
+
+#### 11. depcheck 可以查看 package.json 那些依赖没有被引用或被引用的依赖没有被下载

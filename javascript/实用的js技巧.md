@@ -235,3 +235,5 @@ const getTypeOf = (obj) => Object.prototype.toString.call(obj).match(/\[object (
 ```js
 let res = [1,2,0,undefined,null,false,''].filter(Boolean); // 1,2
 ```
+
+#### 29. 使用#region和#endregion能闭合注释块
