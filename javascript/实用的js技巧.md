@@ -237,3 +237,13 @@ let res = [1,2,0,undefined,null,false,''].filter(Boolean); // 1,2
 ```
 
 #### 29. 使用#region和#endregion能闭合注释块
+
+#### 30. 创建一个1-8的数组
+```js
+Array(8).fill().map((_,i) => i+1)
+```
+
+#### 31. 获取当前时间
+```js
+new Date().toLocaleTimeString();
+```
