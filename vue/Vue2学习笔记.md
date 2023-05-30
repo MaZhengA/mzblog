@@ -38,6 +38,7 @@ Object.defineProperty(person, 'age', {
 - <input type="radio" /> 则v-model收集的是value值，且要给input配置value值
 - <input type="checkbox" /> 如果没有配置value值，则收集的是checked(布尔值), 如果配置了value，则收集的是选中的value数组
 - .lazy修饰符表示失焦后获取value，.number表示获取数字类型，.trim清除左右两边的空格
+- .native 用于在一个组件的根元素上直接监听一个原生事件。相当于把vue组件变成了一个html标签(组件的根元素)，可以访问原生事件
 17. 常用生命周期钩子
 - mounted:发送ajax请求、启动定时器、绑定自定义事件、订阅消息
 - beforeDestroy:清除自定义事件、清除定时器、取消订阅消息

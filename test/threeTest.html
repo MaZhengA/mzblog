@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My first three.js app</title>
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+    const scene = new THREE.Scene();
+    // 透视摄像机
+    // 参数 1. 视野角度 2. 长宽比 3. 近截面 4. 远截面
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // 渲染器
+    const renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    // 将渲染器添加到 html 结构中
+    document.body.appendChild(renderer.domElement);
+
+    const geometry = new THREE.BoxGeometry(1,1,1);
+    // 0x00ff00 相当于 #00ff00
+    const material = new THREE.MeshBasicMaterial({color: 0x00ff00})
+
+    // 网格对象
+    const cube = new THREE.Mesh(geometry, material);
+    // 把网格对象放入场景中
+    scene.add(cube);
+    // 摄像机外移，为了防止摄像机和立方体重叠
+    camera.position.z = 5;
+
+    // 渲染场景
+    function animate() {
+      requestAnimationFrame( animate ); // 屏幕刷新时对场景进行绘制的循环(刷新频率为60次/秒)
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render( scene, camera );
+    }
+    animate()
+
+  </script>
+</body>
+</html>

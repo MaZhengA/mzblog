@@ -104,3 +104,6 @@ input是一个void元素标记，既不能有“children”，也不能使用“
 
 #### 18. polyfill 
 polyfill是一块代码，用来为旧浏览器提供它没有原生支持的比较新的属性
+
+#### 19. <script type="module"></script>
+如果 type 属性为 module ，代码会被当作 JavaScript 模块
