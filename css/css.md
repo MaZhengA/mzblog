@@ -50,3 +50,5 @@
 
 #### 11. 夜空的颜色
 background: linear-gradient(to bottom, #000 0%, #5788fe 100%);
+
+#### 12. 同一个div内的span设置padding时img也跟着变是因为vertical-align的影响–
