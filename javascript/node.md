@@ -48,3 +48,7 @@ server.listen(port, hostname, () => {
 #### 10. -S 等价于 --save && -D 等价于 --save-dev
 
 #### 11. depcheck 可以查看 package.json 那些依赖没有被引用或被引用的依赖没有被下载
+
+#### 12. npm安装全局依赖报错问题
+问题：npm WARN checkPermissions Missing write access to /usr/local/lib/node_modules <br/>
+方法：修改npm包所安装目录的权限：sudo chown -R $USER /usr/local   然后输入密码就可以了

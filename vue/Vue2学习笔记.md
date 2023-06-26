@@ -73,3 +73,6 @@ VueComponent.prototype.__proto__ === Vue.prototype;这样可以使VueComponent�
 2. vite-plugin-cdn-import 是一个Vite插件，允许指定 modules 在生产环境中使用 CDN 引入。这可以减少构建时间,并且提高生产环境中页面加载速度。
 prodUrl 允许为特定的模块指定CDN的位置。autoComplete 支持自动完成引入，无需通过定义对象的方式引入
 3. rollup-plugin-visualizer 可以用来分析vite创建的项目的打包体积，在 vite.config.js 中的 plugins 中配置 visualizer({ open: true })，然后执行npm run build 会生成一个 stats.html 文件
+
+#### 开发踩坑
+全局事件总线没有执行是因为$emit的时机早于$on
