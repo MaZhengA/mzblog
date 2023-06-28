@@ -52,3 +52,27 @@ server.listen(port, hostname, () => {
 #### 12. npm安装全局依赖报错问题
 问题：npm WARN checkPermissions Missing write access to /usr/local/lib/node_modules <br/>
 方法：修改npm包所安装目录的权限：sudo chown -R $USER /usr/local   然后输入密码就可以了
+
+#### 13. path
+path.resolve() 将返回当前工作目录的绝对路径<br/>
+resolve() 是获取当前运行文件夹的路径，如果不写__dirname，如果不是在目标文件下运行路径会错误。
+```js
+path.resolve('work/js', 'ts/vue')  
+// /work/js/ts/vue
+path.resolve(__dirname)
+// 当前文件所在目录的绝对路径，包含当前文件夹
+```
+
+#### 14. fs
+1. fs.writeFileSync(file, data[, options]) 文件同步写入的方法
+ - file // 文件名
+ - data // 写入的数据
+ - options // 一些选项，包括encoding，flag，mode
+
+2. fs.readFileSync(file, [, options]) 同步读取文件内容
+```js
+let fs = require('fs');
+fs.writeFileSync('nodeWrite.txt', 'hello world', 'utf8');
+const data = fs.readFileSync('nodeWrite.txt', 'utf8');
+console.log(data, 'data==') // hello world data== 在当前目录创建一个 nodeWrite.txt 文件并写值
+```
