@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/three.js/0.151.3/three.min.js"></script>
+</head>
+
+<body>
+  <div id="dom"></div>
+  <script>
+
+    function init() {
+
+      var camera;
+      var renderer;
+      var scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
+
+      camera.position.x = 180;
+      camera.position.y = 80;
+      camera.position.z = 90;
+      camera.lookAt(scene.position);
+      function createPath(pointsArr) {
+        pointsArr = pointsArr.map((point) => new THREE.Vector3(...point)); // 将参数数组转换成点数组的形式
+
+        // 方法一：自定义三维路径 curvePath
+        const path = new THREE.CurvePath();
+        for (let i = 0; i < pointsArr.length - 1; i++) {
+          const lineCurve = new THREE.LineCurve3(pointsArr[i], pointsArr[i + 1]); // 每两个点之间形成一条三维直线
+          path.curves.push(lineCurve); // curvePath有一个curves属性，里面存放组成该三维路径的各个子路径
+        }
+        return path;
+      }
+
+      var pointsArr = [
+        [42, 0, 10],
+        [21, 0, 10],
+        [21, 0, 1],
+        [-3, 0, 1],
+        [-3, 0, -18],
+        [-10, 0, -18],
+        [-10, 0, 5],
+        [1, 0, 5],
+        [1, 0, 24],
+        [-27, 0, 24],
+        [-27, 0, 18],
+        [-46, 0, 19],
+        [-46, 0, -4],
+        [-25, 0, -6],
+        [-25, 0, -19],
+        [-35, 0, -20],
+        [-35, 0, -26],
+        [-30, 0, -30],
+        [3, 0, -30]
+      ];
+      var curve = createPath(pointsArr)
+      var tubeGeometry = new THREE.TubeGeometry(curve, 1000, 0.5, 100, false);
+      var textureLoader = new THREE.TextureLoader();
+      texture = textureLoader.load('http://pic.yupoo.com/mazhenghjj/4660dc82/8b6198c9.png'); //./ZS箭头.svg  ./arrow.jpg
+      // 设置阵列模式为 RepeatWrapping
+      texture.wrapS = THREE.RepeatWrapping
+      texture.wrapT = THREE.RepeatWrapping
+      texture.repeat.x = 50;
+      texture.repeat.y = 2;
+      texture.offset.y = 0.5;
+      var tubeMaterial = new THREE.MeshPhongMaterial({
+        map: texture,
+        transparent: true,
+        color: 0x47d8fa,
+        side: THREE.DoubleSide,
+        //opacity: 0.4,
+      });
+
+      // 设置数组材质对象作为网格模型材质参数
+      var mesh = new THREE.Mesh(tubeGeometry, tubeMaterial); //网格模型对象Mesh
+      mesh.position.y = 2;
+      mesh.rotateZ(3.14);
+      mesh.scale.set(2, 2, 2);
+      scene.add(mesh);
+
+      var tween = new TWEEN.Tween({ x: 10 }).to({ x: 3 }, 10000)
+        .easing(TWEEN.Easing.Elastic.InOut)
+        .onUpdate(function () {
+          console.log(this.x)
+        })
+      // .start()
+      // 创建一个渲染器并设置大小，WebGLRenderer将会使用电脑显卡来渲染场景
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        logarithmicDepthBuffer: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      ;
+      document.getElementById("dom").appendChild(renderer.domElement);
+
+      // 启动动画
+      renderScene();
+
+      function renderScene() {
+        TWEEN.update();
+        // orbit.update();
+        // 使用requestAnimationFrame函数进行渲染
+        requestAnimationFrame(renderScene);
+        renderer.render(scene, camera);
+        texture.offset.x -= 0.04
+      }
+
+      // 渲染的场景
+      // renderer.render(scene, camera);
+    }
+    window.onload = init;
+  </script>
+</body>
+
+</html>

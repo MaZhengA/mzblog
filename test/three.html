@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- <div id="webgl" style="margin-top: 200px;"></div> -->
+
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
+    console.log(OrbitControls, 'OrbitControls==')
+    // 1. 创建一个场景
+    const scene = new THREE.Scene();
+
+    // 2. 给三维场景添加物体
+    // 定义一个几何体，长宽高都是100
+    const geometry = new THREE.BoxGeometry( 100, 100, 100 );
+    // 定义一个基础网格材质
+    // MeshBasicMaterial 不受光照影响
+    // MeshLambertMaterial
+    const material = new THREE.MeshLambertMaterial({
+      color: 0x00ffff,
+      // transparent: true, // 开启透明
+      // opacity: 1 // 透明值
+    });
+    // 创建一个网格模型，表示物体
+    const cube = new THREE.Mesh( geometry, material );
+    // 设置网格模型在三围空间中的坐标
+    cube.position.set(0, 0, 0);
+    // 把物体添加到场景中
+    scene.add( cube );
+
+    // 创建一个三维的坐标轴
+    const axesHelper = new THREE.AxesHelper( 100 );
+    scene.add(axesHelper);
+
+    // 设置点光源
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    // 点光源位置
+    pointLight.position.set( 400, 200, 50 ) // 放在x轴上
+    scene.add(pointLight);
+    
+    // 3. 拍照
+    // 定义相机输出的画布尺寸
+    const width = 800;
+    const height = 500;
+
+    // 设置相机的4个参数
+
+    // 创建一个透视投影相机对象
+    const camera = new THREE.PerspectiveCamera(40, width/height, 0.1, 3000);
+    camera.position.set(200, 200, 200);
+
+    // 定义相机的视线
+    camera.lookAt(cube.position); // 指向网格模型
+    
+    // 4. 创建一个渲染器
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(width, height);
+    renderer.render(scene, camera); // 用相机(camera)渲染一个场景(scene)。类比相机的拍照动作
+    document.body.appendChild( renderer.domElement );
+    // document.getElementById('webgl').appendChild(renderer.domElement)
+  </script>
+</body>
+
+</html>
