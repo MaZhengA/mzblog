@@ -203,3 +203,4 @@ style 标签设置 scoped 属性时，css 只作用于当前组件，增加这�
 
 ### 七、踩坑
 1. 使用 reactive 定义的数据没刷新页面，给数据外面包一层或者改用ref
+2. 使用 Transition 必须有 v-if 和 key, 否则无效
