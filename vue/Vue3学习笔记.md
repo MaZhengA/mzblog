@@ -223,3 +223,4 @@ vscode特有配置 jsconfig.js
   }
 },
 ```
+4. 当el-dialog和el-drawer作为子组件时，使用model-value控制显隐，否则会报readonly警告
