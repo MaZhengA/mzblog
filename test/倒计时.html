@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倒计时</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    .dao {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div class="dao">
+    <h2>倒计时</h2>
+    <h3 id="countdown"></h3>
+  </div>
+</body>
+<script>
+  window.onload = function() {
+    countdown.style.color = '#67c23a'
+    countdown.style.marginTop = '-10px'
+    let timer = null
+    timer = setInterval(() => {
+      const countdown = document.getElementById('countdown')
+      const currentTimeStemp = new Date().getTime()
+      const endTimeStemp = new Date('2023-9-28 18:00:00').getTime()
+      const diff = endTimeStemp - currentTimeStemp
+
+      const remainingTime = diff / 1000;
+      const h = Math.floor(remainingTime / 3600);
+      const m = Math.floor(remainingTime / 60 % 60);
+      const s = Math.floor(remainingTime % 60)
+      countdown.innerHTML = `距离下班还剩 ${h}时 : ${m}分 : ${s}秒`
+    }, 1000)
+  } 
+</script>
+</html>
