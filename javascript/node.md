@@ -76,3 +76,11 @@ fs.writeFileSync('nodeWrite.txt', 'hello world', 'utf8');
 const data = fs.readFileSync('nodeWrite.txt', 'utf8');
 console.log(data, 'data==') // hello world data== 在当前目录创建一个 nodeWrite.txt 文件并写值
 ```
+
+#### 15. nrm
+nrm是npm源管理器，允许切换各种npm源
+1. nrm ls 展示所有可用源
+2. nrm current 展示当前源
+3. nrm use <registry> 切换源
+4. nrm del <registry> 删除源
+5. nrm test npm 测试源速度(测试npm的速度)
