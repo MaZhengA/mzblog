@@ -99,3 +99,6 @@ commit了一次特别尴尬的提交，使用这个命令，可以再次修改�
 
 ### 七. 查看服务器端口是否连通 
 nc -vz -w 2 114.116.235.175 8080
+
+### 八. window版本的vscode集成git
+如果遇到vscode中找不到git，提示安装git，则为需要在setting.json文件中配置git.path路径，值为git.exe的路径，配置成功或重启vscode即可

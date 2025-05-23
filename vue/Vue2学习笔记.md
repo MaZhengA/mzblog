@@ -65,6 +65,9 @@ VueComponent.prototype.__proto__ === Vue.prototype;这样可以使VueComponent�
 5. ts-loader 不能处理vue文件，因此在options中要加 appendTsSuffixTo: [/\.vue$/],
 6. lintOnSave 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
 7. transpileDependencies 默认情况下 babel-loader 会忽略所有 node_modules 中的文件，开启此选项(true)，以避免构建后的代码中出现未转译的第三方依赖。会降低构建速度，因此可以传输一个数组，列出第三方包名或正则表达式
+8. devServer原理：通过启动本地的http服务器，提供静态资源服务、实现热更新和代理功能。
+代理拦截：当浏览器发送的请求匹配到代理规则时，devServer会拦截该请求
+转发请求：本地的http服务器会将拦截到的请求转发给目标服务器，并将目标服务器的响应返回给浏览器
 
 #### Vite vite.config.js
 1. 介绍：前端构建工具，能够显著提升前端开发体验。两部分组成：
@@ -76,3 +79,4 @@ prodUrl 允许为特定的模块指定CDN的位置。autoComplete 支持自动�
 
 #### 开发踩坑
 全局事件总线没有执行是因为$emit的时机早于$on
+
